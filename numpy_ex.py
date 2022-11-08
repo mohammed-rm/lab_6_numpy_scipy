@@ -53,7 +53,7 @@ class Matrix:
     def solve_linear_equation(linear_system: list):
         matrix = Matrix((3, 3), np.array([lines[:-1] for lines in linear_system]))
         vector = Matrix((3, 1), np.array([lines[-1] for lines in linear_system]))
-        return np.linalg.solve(matrix.matrix, vector.matrix)
+        return np.linalg.solve(matrix.matrix, vector.matrix) if matrix.determinant() != 0 else None
 
 
 if __name__ == '__main__':
@@ -101,6 +101,6 @@ if __name__ == '__main__':
     # 2x + 3y + 4z = 1
     # 3x + 2y + 1z = 2
     # 4x + 1y + 2z = 3
-    linear_system = [[20, 3, 4, 1], [3, 2, 10, 2], [4, 1, -2, 9]]
+    linear_system = [[0, 0, 0, 1], [3, 2, 10, 2], [4, 1, -2, 9]]
     print(Matrix.solve_linear_equation(linear_system))
 
